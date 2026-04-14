@@ -4,6 +4,24 @@ import {
     createCompetitor,
     seedCompetitors
 } from '../services/competitorService.js';
+import Competitor from '../models/competitor.js';
+
+export async function updateCompetitor(req, res) {
+    try {
+        const { id } = req.params;
+        const competitor = await Competitor.findByIdAndUpdate(
+            id,
+            req.body,
+            { new: true }
+        );
+        if (!competitor) {
+            return res.status(404).json({ message: "Competidor no encontrado" });
+        }
+        res.status(200).json(competitor);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
 
 export async function getCompetitors(req, res) {
     try {

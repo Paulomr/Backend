@@ -3,7 +3,8 @@ import {
     getCompetitors,
     getCompetitor,
     addCompetitor,
-    initCompetitors
+    initCompetitors,
+    updateCompetitor
 } from '../controllers/competitorController.js';
 
 const router = express.Router();
@@ -19,5 +20,7 @@ router.post('/create', addCompetitor);
 
 // POST /api/competitors/seed - Inicializar competidores
 router.post('/seed', initCompetitors);
+
+router.put('/update/:id', updateCompetitor);
 
 export default router;
