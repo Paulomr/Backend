@@ -73,7 +73,7 @@ const voteSchema = new mongoose.Schema({
     optionName: {
         type: String,
         required: [true, "El nombre de la opción es requerido"],
-        enum: ['Ancookies', 'Galletery', 'Fratelli', 'Bluetopia', 'Koalas', 'Bruki']  // Corregido: Koalas en lugar de Atlas
+        enum: ['Crunchy Munch', 'Dolcatto', 'Fratelli Repostería', 'Koalas Bakery', 'Ancookies', 'Crunchy Munch 2'] 
     },
     ipAddress: {
         type: String,
@@ -96,8 +96,7 @@ voteSchema.pre('save', function(next) {
     console.log('Pre-save middleware ejecutándose...');
     console.log('selectedOption:', this.selectedOption);
     
-    const options = ['Ancookies', 'Galletery', 'Fratelli', 'Bluetopia', 'Koalas', 'Bruki'];  // Corregido
-    
+    const options = ['Crunchy Munch', 'Dolcatto', 'Fratelli Repostería', 'Koalas Bakery', 'Ancookies'];    
     // Verificar que selectedOption sea un número válido
     if (typeof this.selectedOption === 'number' && 
         this.selectedOption >= 0 && 
@@ -116,8 +115,7 @@ voteSchema.pre('save', function(next) {
 voteSchema.pre('validate', function(next) {
     console.log('Pre-validate middleware ejecutándose...');
     
-    const options = ['Ancookies', 'Galletery', 'Fratelli', 'Bluetopia', 'Koalas', 'Bruki'];  // Corregido
-    
+    const options = ['Crunchy Munch', 'Dolcatto', 'Fratelli Repostería', 'Koalas Bakery', 'Ancookies', 'Crunchy Munch 2'];    
     // Si no tiene optionName pero sí selectedOption, asignarlo
     if (!this.optionName && typeof this.selectedOption === 'number') {
         if (this.selectedOption >= 0 && this.selectedOption <= 5) {
