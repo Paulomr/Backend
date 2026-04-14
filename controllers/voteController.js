@@ -29,7 +29,7 @@ export async function createVote(req, res) {
         }
         
         // Validar rango de opción
-        if (selectedOption < 0 || selectedOption > 5) {
+        if (selectedOption < 0 || selectedOption > 4) {
             return res.status(400).json({ 
                 message: "Opción seleccionada inválida" 
             });

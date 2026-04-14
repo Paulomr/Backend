@@ -67,13 +67,13 @@ const voteSchema = new mongoose.Schema({
     selectedOption: {
         type: Number,
         required: [true, "La opción seleccionada es requerida"],
-        min: [0, "La opción debe estar entre 0 y 5"],
-        max: [5, "La opción debe estar entre 0 y 5"]
+        min: [0, "La opción debe estar entre 0 y 4"],
+        max: [4, "La opción debe estar entre 0 y 4"]
     },
     optionName: {
         type: String,
         required: [true, "El nombre de la opción es requerido"],
-        enum: ['Ancookies', 'Galletery', 'Fratelli', 'Bluetopia', 'Koalas', 'Bruki']  // Corregido: Koalas en lugar de Atlas
+        enum: ['Crunchy Munch', 'Dolcatto', 'Fratelli Repostería', 'Koalas Bakery', 'Ancookies'] 
     },
     ipAddress: {
         type: String,
@@ -96,8 +96,7 @@ voteSchema.pre('save', function(next) {
     console.log('Pre-save middleware ejecutándose...');
     console.log('selectedOption:', this.selectedOption);
     
-    const options = ['Ancookies', 'Galletery', 'Fratelli', 'Bluetopia', 'Koalas', 'Bruki'];  // Corregido
-    
+    const options = ['Crunchy Munch', 'Dolcatto', 'Fratelli Repostería', 'Koalas Bakery', 'Ancookies'];    
     // Verificar que selectedOption sea un número válido
     if (typeof this.selectedOption === 'number' && 
         this.selectedOption >= 0 && 

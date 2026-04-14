@@ -12,6 +12,7 @@ import toppingRouter from './toppingRouter.js';
 import iceCreamRouter from './iceCreamRouter.js';
 import pedidoRouter from './pedidosRouter.js';
 import voteRouter from './voteRouter.js';
+import competitorRouter from './competitorRouter.js';
 
 
 const router = express.Router();      
@@ -28,6 +29,7 @@ router.use('/topping', toppingRouter);
 router.use('/iceCream', iceCreamRouter); 
 router.use('/pedidos', pedidoRouter); 
 router.use('/vote', voteRouter);
+router.use('/competitors', competitorRouter);
 
 
-export default router;   
+export default router;

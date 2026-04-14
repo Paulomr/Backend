@@ -1,7 +1,7 @@
 
 import { SitemapStream, streamToPromise } from 'sitemap';
 import { Readable } from 'stream';
-import Category from '../models/category';
+import Category from '../models/category.js';
 
 class SitemapService {
   constructor() {
