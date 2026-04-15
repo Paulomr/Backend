@@ -3,6 +3,7 @@ import {
     createNewVote2026,
     getVoting2026Statistics,
     checkIfVoted2026,
+    checkIfVoted2026ByEmail,
     getVote2026ById,
     deleteVote2026
 } from '../services/vote2026Service.js';
@@ -122,6 +123,35 @@ export async function checkVote2026(req, res) {
 
         res.status(200).json({
             documento,
+            hasVoted
+        });
+
+    } catch (error) {
+        return res.status(500).json({ message: error.message });
+    }
+}
+
+export async function checkVote2026ByEmail(req, res) {
+    try {
+        const { correo } = req.query;
+
+        if (!correo) {
+            return res.status(400).json({
+                message: "Correo electrónico es requerido"
+            });
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(correo.trim())) {
+            return res.status(400).json({
+                message: "Formato de correo electrónico inválido"
+            });
+        }
+
+        const hasVoted = await checkIfVoted2026ByEmail(correo);
+
+        res.status(200).json({
+            correo: correo.toLowerCase().trim(),
             hasVoted
         });
 

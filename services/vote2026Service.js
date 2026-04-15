@@ -67,7 +67,7 @@ export async function createNewVote2026(data, ipAddress, userAgent) {
         return await Vote2026.findById(newVote._id).populate(populateFields);
     } catch (error) {
         console.error(error);
-        throw new Error(`Error al crear el voto: ${error.message}`);
+        throw error;
     }
 }
 
@@ -164,6 +164,20 @@ export async function checkIfVoted2026(documento) {
     } catch (error) {
         console.error(error);
         throw new Error(`Error al verificar voto: ${error.message}`);
+    }
+}
+
+export async function checkIfVoted2026ByEmail(correo) {
+    try {
+        const existingVote = await Vote2026.findOne({
+            correo: correo.toLowerCase().trim(),
+            deletedAt: null
+        });
+
+        return !!existingVote;
+    } catch (error) {
+        console.error(error);
+        throw new Error(`Error al verificar voto por correo: ${error.message}`);
     }
 }
 

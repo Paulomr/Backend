@@ -55,6 +55,7 @@ const vote2026Schema = new mongoose.Schema({
     correo: {
         type: String,
         required: [true, "El correo electrónico es requerido"],
+        unique: true,
         lowercase: true,
         trim: true,
         validate: {
