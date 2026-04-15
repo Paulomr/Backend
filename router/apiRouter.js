@@ -12,6 +12,7 @@ import toppingRouter from './toppingRouter.js';
 import iceCreamRouter from './iceCreamRouter.js';
 import pedidoRouter from './pedidosRouter.js';
 import voteRouter from './voteRouter.js';
+import vote2026Router from './vote2026Router.js';
 import competitorRouter from './competitorRouter.js';
 
 
@@ -29,6 +30,7 @@ router.use('/topping', toppingRouter);
 router.use('/iceCream', iceCreamRouter); 
 router.use('/pedidos', pedidoRouter); 
 router.use('/vote', voteRouter);
+router.use('/vote2026', vote2026Router);
 router.use('/competitors', competitorRouter);
 
 
